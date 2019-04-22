@@ -86,7 +86,7 @@ export default class Container extends PureComponent {
         ref={node => {
           this.node = node;
           if (this.props.ref) {
-            this.props.ref = ref;
+            return this.props.ref;
           }
         }}
         onScroll={this.notifySubscribers}
