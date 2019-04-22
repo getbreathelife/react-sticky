@@ -1,6 +1,6 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import raf from "raf";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import raf from 'raf';
 
 export default class Container extends PureComponent {
   static childContextTypes = {
@@ -18,13 +18,13 @@ export default class Container extends PureComponent {
   }
 
   events = [
-    "resize",
-    "scroll",
-    "touchstart",
-    "touchmove",
-    "touchend",
-    "pageshow",
-    "load"
+    'resize',
+    'scroll',
+    'touchstart',
+    'touchmove',
+    'touchend',
+    'pageshow',
+    'load'
   ];
 
   subscribers = [];
@@ -83,7 +83,12 @@ export default class Container extends PureComponent {
     return (
       <div
         {...this.props}
-        ref={node => (this.node = node)}
+        ref={node => {
+          this.node = node;
+          if (this.props.ref) {
+            this.props.ref = ref;
+          }
+        }}
         onScroll={this.notifySubscribers}
         onTouchStart={this.notifySubscribers}
         onTouchMove={this.notifySubscribers}
