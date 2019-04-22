@@ -40,6 +40,7 @@ export default class Container extends PureComponent {
   };
 
   notifySubscribers = evt => {
+    this.props.onScroll && this.props.onScroll(evt);
     if (!this.framePending) {
       const { currentTarget } = evt;
 
